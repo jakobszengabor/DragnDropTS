@@ -1,5 +1,3 @@
-// GitHub + GitLab import test
-
 // Project State Management
 
 class ProjectState {
