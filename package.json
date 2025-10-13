@@ -1,19 +1,22 @@
 {
-  "name": "understanding-typescript",
+  "name": "drag-n-drop-ts",
   "version": "1.0.0",
-  "description": "Understanding TypeScript Course Setup",
+  "description": "Drag and drop typescript project using OOP paradigm and Vitest for testing",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lite-server"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest"
   },
-  "keywords": [
-    "typescript",
-    "course"
-  ],
-  "author": "Maximilian Schwarzmüller",
-  "license": "ISC",
+  "author": "Gábor Jakobszen",
+  "license": "MIT",
   "devDependencies": {
-    "lite-server": "^2.5.4"
+    "@types/node": "^24.7.2",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "jsdom": "^27.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9",
+    "vitest": "^3.2.4"
   }
 }
