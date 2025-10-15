@@ -1,4 +1,5 @@
 export enum ProjectStatus {
+  Available,
   Active,
   Finished,
 }

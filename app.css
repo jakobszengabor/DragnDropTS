@@ -17,6 +17,11 @@ textarea {
   margin: 0.5rem 0;
 }
 
+#main {
+  display: flex;
+  justify-content: center;
+}
+
 label {
   font-weight: bold;
 }
@@ -58,6 +63,7 @@ button:active {
 .projects {
   margin: 1rem;
   border: 1px solid #ff0062;
+  flex-grow: 1;
 }
 
 .projects header {

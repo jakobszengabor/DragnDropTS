@@ -7,8 +7,8 @@ import { ProjectItem } from "./project-item.js";
 
 export class ProjectList extends Component<HTMLDivElement, HTMLElement> implements DragTarget {
   assignedProjects: Project[];
-  constructor(private type: "active" | "finished") {
-    super("project-list", "app", false, `${type}-projects`);
+  constructor(private type: "active" | "finished" | "available") {
+    super("project-list", "main", false, `${type}-projects`);
     this.assignedProjects = [];
 
     this.configure();
@@ -27,7 +27,10 @@ export class ProjectList extends Component<HTMLDivElement, HTMLElement> implemen
   @autobind
   dropHandler(event: DragEvent): void {
     const prjId = event.dataTransfer!.getData("text/plain");
-    projectState.moveProject(prjId, this.type === "active" ? ProjectStatus.Active : ProjectStatus.Finished);
+    projectState.moveProject(
+      prjId,
+      this.type === "available" ? ProjectStatus.Available : this.type === "active" ? ProjectStatus.Active : ProjectStatus.Finished
+    );
   }
 
   @autobind
@@ -52,6 +55,9 @@ export class ProjectList extends Component<HTMLDivElement, HTMLElement> implemen
       const relevantProjects = projects.filter((prj) => {
         if (this.type === "active") {
           return prj.status === ProjectStatus.Active;
+        }
+        if (this.type === "available") {
+          return prj.status === ProjectStatus.Available;
         }
         return prj.status === ProjectStatus.Finished;
       });

@@ -27,9 +27,10 @@ export class ProjectState extends State<Project> {
   }
 
   addProject(title: string, description: string, numOfPeople: number) {
-    const newProject = new Project(Math.random().toString(), title, description, numOfPeople, ProjectStatus.Active);
+    const newProject = new Project(Math.random().toString(), title, description, numOfPeople, ProjectStatus.Available);
 
     this.projects.push(newProject);
+
     for (const listenerFn of this.listeners) {
       listenerFn(this.projects.slice());
     }
@@ -39,7 +40,6 @@ export class ProjectState extends State<Project> {
     const project = this.projects.find((prj) => prj.id === projectId);
     if (project && project.status !== newStatus) {
       project.status = newStatus;
-
       this.updateListeners();
     }
   }
